@@ -1,7 +1,10 @@
 import Image from "next/image";
 import { useContext } from "react";
 import { PlayerContext } from "../../contexts/PlayerContext";
+import Slider from "rc-slider";
+import "rc-slider/assets/index.css";
 import styles from "./styles.module.scss";
+
 
 export default function Player() {
   const { episodeList, currentEpisodeIndex } = useContext(PlayerContext);
@@ -37,7 +40,15 @@ export default function Player() {
           <span>00:00</span>
 
           <div className={styles.slider}>
-            <div className={styles.emptySlider} />
+            { episode ? (
+                <Slider 
+                    trackStyle={{ backgroundColor: '#04d361' }}
+                    railStyle={{ backgroundColor: '#9f75ff' }}
+                    handleStyle={{ borderColor: '#04d361', borderWidth: 4 }}
+                />
+            ) : (
+                <div className={styles.emptySlider} />
+            )}
           </div>
 
           <span>00:00</span>
